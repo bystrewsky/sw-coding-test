@@ -1,21 +1,51 @@
 <?php
 enum CommentCategory: String {
-    case Candy = 'Candy';
-    case Calls = 'Calls';
-    case Referral = 'Referral';
-    case Signature = 'Signature';
-    case Misc = 'Miscellaneous';
+    case CANDY = 'Candy';
+    case CALLS = 'Calls';
+    case REFERRAL = 'Referral';
+    case SIGNATURE = 'Signature';
+    case MISC = 'Miscellaneous';
 }
 
 class CommentController {
     private $model;
+    private $categorySearchPatterns = [
+        CommentCategory::CANDY->value => '/candy|smarties/',
+        CommentCategory::CALLS->value => '/call/',
+        CommentCategory::REFERRAL->value => '/referred|referral/',
+        CommentCategory::SIGNATURE->value => '/signature/',
+    ];
+
 
     public function __construct(Comment $commentModel)
     {
         $this->model = $commentModel;
     }
     public function index() {
-        $comments = $this->model->getAllComments();
+        $commentsUnsorted = $this->model->getAllComments();
+
+        $commentsByCategory = [
+            CommentCategory::CANDY->value => [],
+            CommentCategory::CALLS->value => [],
+            CommentCategory::REFERRAL->value => [],
+            CommentCategory::SIGNATURE->value => [],
+            CommentCategory::MISC->value => []
+        ];
+
+        foreach ($commentsUnsorted as $comment) { 
+            $text = strtolower($comment->comments);
+            
+            //this allows to add more categories/search patterns and keep this piece of code unchanged
+            foreach ($this->categorySearchPatterns as $key => $searchPattern) {
+                if(preg_match($searchPattern, $text)) {
+                    $commentsByCategory[$key][] = $comment;
+                    continue 2;
+                }
+            }
+
+            $commentsByCategory[CommentCategory::MISC->value][] = $comment;
+        }
+
         return require __DIR__ .'/../views/main.php';
     }
 }
