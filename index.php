@@ -1,4 +1,6 @@
 <?php
+require_once './src/models/Comment.php';
+require_once './src/controllers/CommentController.php';
 
 $db_config = require('./config/db.php');
 
@@ -13,6 +15,8 @@ try {
     die('Failed to connect to the database: ' . $e->getMessage());
 }
 
-echo "Hello there!";
+$commentModel = new Comment($db);
+$commentController = new CommentController($commentModel);
+$commentController->index();
 
 ?>
