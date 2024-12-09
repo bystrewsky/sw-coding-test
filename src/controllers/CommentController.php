@@ -11,7 +11,7 @@ class CommentController {
     private $model;
     private $categorySearchPatterns = [
         CommentCategory::CANDY->value => '/candy|smarties/',
-        CommentCategory::CALLS->value => '/call/',
+        CommentCategory::CALLS->value => '/call me|please call|phone call/',
         CommentCategory::REFERRAL->value => '/referred|referral/',
         CommentCategory::SIGNATURE->value => '/signature/',
     ];

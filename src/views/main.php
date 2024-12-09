@@ -3,6 +3,13 @@
     <head>
         <title>Comments</title>
     </head>
+    <style>
+        .comment {
+            margin-top: 3px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
     <body>
         <div class="main-wrapper">
             <?php foreach ($commentsByCategory as $category=>$comments): ?>
