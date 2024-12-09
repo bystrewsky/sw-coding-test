@@ -29,7 +29,7 @@ class Comment {
             if (preg_match($datePattern, $comment->comments, $matches)) {
                 $date = $matches[1];
 
-                $updateQuery->execute(['shipdate'=>date('Y-d-m H:i:s', strtotime($date)), 'id'=>$comment->orderid]);
+                $updateQuery->execute(['shipdate'=>date('Y-m-d H:i:s', strtotime($date)), 'id'=>$comment->orderid]);
             }
         }
     }

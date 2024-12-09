@@ -30,7 +30,7 @@ class App {
         // Uncomment one of the following lines to populate/reset Ship Date
         
         // $commentController->resetShipDate();
-        // $commentController->populateShipDate();
+        $commentController->populateShipDate();
         
         $commentController->index();
     }
