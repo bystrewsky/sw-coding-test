@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../models/Comment.php';
 require __DIR__ . '/../controllers/CommentController.php';
+
 class App {
     private $db;
 

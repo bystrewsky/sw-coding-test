@@ -1,4 +1,5 @@
 <?php
+
 enum CommentCategory: String {
     case CANDY = 'Candy';
     case CALLS = 'Calls';
@@ -21,6 +22,7 @@ class CommentController {
     {
         $this->model = $commentModel;
     }
+    
     public function index() {
         $commentsUnsorted = $this->model->getAllComments();
 
