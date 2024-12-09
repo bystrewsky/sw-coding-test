@@ -20,7 +20,7 @@ class Comment {
         $getCommentsQuery = $this->db->prepare("SELECT * FROM `".$this->tableName."` WHERE `comments` LIKE :keyword");
         $updateQuery = $this->db->prepare("UPDATE `".$this->tableName."` SET `shipdate_expected` = :shipdate WHERE `orderid` = :id");
 
-        $getCommentsQuery->execute(['keyword'=>'%Ship Date:%']);
+        $getCommentsQuery->execute(['keyword'=>'%Expected Ship Date:%']);
 
         $comments = $getCommentsQuery->fetchAll(PDO::FETCH_OBJ);
 
