@@ -17,6 +17,12 @@ try {
 
 $commentModel = new Comment($db);
 $commentController = new CommentController($commentModel);
+
+// Uncomment one of the following lines to populate/reset Ship Date
+
+// $commentController->resetShipDate();
+// $commentController->populateShipDate();
+
 $commentController->index();
 
 ?>

@@ -48,6 +48,14 @@ class CommentController {
 
         return require __DIR__ .'/../views/main.php';
     }
+
+    public function populateShipDate() {
+        $this->model->populateShipDate();
+    }
+
+    public function resetShipDate() {
+        $this->model->resetShipDate();
+    }
 }
 
 ?>
