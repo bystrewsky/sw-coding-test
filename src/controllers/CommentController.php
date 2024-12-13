@@ -11,7 +11,7 @@ enum CommentCategory: String {
 class CommentController {
     private $model;
     private $categorySearchPatterns = [
-        CommentCategory::CANDY->value => '/candy|smarties/',
+        CommentCategory::CANDY->value => '/candy|smarties|tootsie|taffy/',
         CommentCategory::CALLS->value => '/call me|please call|phone call/',
         CommentCategory::REFERRAL->value => '/referred|referral/',
         CommentCategory::SIGNATURE->value => '/signature/',
